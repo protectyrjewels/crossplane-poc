@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  bootstrap:
+    cmds:
+      - helm repo add crossplane-stable https://charts.crossplane.io/stable
+      - helm repo update
+      - kind create cluster -n crossplane-poc
+      - helm install crossplane crossplane-stable/crossplane --namespace crossplane-system --create-namespace
+    silent: false

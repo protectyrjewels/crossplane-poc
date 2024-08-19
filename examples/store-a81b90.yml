@@ -1,0 +1,5 @@
+apiVersion: store.adolfosilva.dev/v1alpha1
+kind: StoreClaim
+spec:
+  region: us-west-1
+  generatedName: a81b90

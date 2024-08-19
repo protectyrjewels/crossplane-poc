@@ -1,0 +1,16 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: store-configuration
+  annotations:
+    meta.crossplane.io/maintainer: Adolfo Silva (@protectyrjewels)
+    meta.crossplane.io/source: github.com/protectyrjewels/crossplane-poc
+    meta.crossplane.io/license: MIT
+    meta.crossplane.io/description: Virtual store
+    meta.crossplane.io/readme: A Configuration package that defines a Store and StoreClaim types that can be used to create and provision Virtual stores.
+spec:
+  crossplane:
+    version: '>=v1.14.0'
+  dependsOn:
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: '>=v1.0.0'
