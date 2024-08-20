@@ -1,6 +1,6 @@
 # crossplane-poc
 
-Just trying out [Crossplane](crossplane.io). Nothing to see here...
+Just trying out [Crossplane](crossplane.io). Nothing to see here.
 
 Using https://github.com/vfarcic/crossplane-kubernetes as a reference point.
 
