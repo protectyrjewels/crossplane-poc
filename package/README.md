@@ -41,7 +41,12 @@ kubectl apply -n crossplane-system -f aws/00-aws-provider-config.yml
 
 # Install the necessary providers
 kubectl apply -n crossplane-system -f aws/01-aws-s3-provider.yml
+kubectl apply -n crossplane-system -f aws/02-aws-sqs-provider.yml
 # provider.pkg.crossplane.io/provider-aws-s3 created
+# provider.pkg.crossplane.io/provider-aws-sqs created
+
+# You can list the installed providers with:
+kubectl get providers
 
 # You should now see two new Pods in the crossplane-system namespace related to the AWS provider installed.
 
@@ -62,7 +67,7 @@ kubectl apply -f examples/store-a81b90.yml
 kubectl get managed
 
 # Or, if be more specific in your listing:
-kubectl get bucket
+kubectl get bucket,queue
 # NAME           SYNCED   READY   EXTERNAL-NAME   AGE
 # store-a81b90   True     False   store-a81b90    9m36s
 

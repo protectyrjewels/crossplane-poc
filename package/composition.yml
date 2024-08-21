@@ -34,3 +34,20 @@ spec:
           patchSetName: metadata
         - type: PatchSet
           patchSetName: region
+    - name: queue
+      base:
+        apiVersion: sqs.aws.upbound.io/v1beta1
+        kind: Queue
+        spec:
+          forProvider:
+            region: us-west-1
+          providerConfigRef:
+            name: default
+      patches:
+        - type: PatchSet
+          patchSetName: metadata
+        - type: PatchSet
+          patchSetName: region
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.id
+          toFieldPath: spec.forProvider.name
