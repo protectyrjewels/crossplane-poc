@@ -24,7 +24,7 @@ spec:
               properties:
                 id:
                   type: string
-                  description: Name of the bucket
+                  description: Unique store identifier
                 region:
                   type: string
                   description: AWS Region
