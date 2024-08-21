@@ -1,5 +1,8 @@
-apiVersion: store.adolfosilva.dev/v1alpha1
+---
+apiVersion: adolfosilva.dev/v1alpha1
 kind: StoreClaim
+metadata:
+  name: store-a81b90
 spec:
+  id: store-a81b90
   region: us-west-1
-  generatedName: a81b90

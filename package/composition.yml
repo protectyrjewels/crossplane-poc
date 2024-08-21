@@ -1,3 +1,4 @@
+---
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -7,42 +8,29 @@ spec:
     apiVersion: adolfosilva.dev/v1alpha1
     kind: Store
   patchSets:
-  - name: metadata
-    patches:
-    - fromFieldPath: metadata.annotations
-      toFieldPath: metadata.annotations
-    - fromFieldPath: spec.generatedName
-      toFieldPath: metadata.name
-      transforms:
-      - type: string
-        string:
-          type: Format
-          fmt: "store-%s"
-  - name: region
-    patches:
-    - type: ToCompositeFieldPath
-      fromFieldPath: spec.region
-      toFieldPatch: spec.forProvider.region
-  resources:
-  - name: bucket
-    base:
-      apiVersion: s3.aws.upbound.io/v1beta2
-      kind: Bucket
-      spec:
-        forProvider:
-          region: us-west-1
-          tags:
-            Name: SampleBucket
+    - name: metadata
       patches:
-      - type: PatchSet
-        patchSetName: metadata
-      - type: PatchSet
-        patchSetName: region
-      - type: FromCompositeFieldPath
-        fromFieldPath: spec.generatedName
-        toFieldPath: spec.forProvider.tags.Name
-        transforms:
-        - type: string
-          string:
-            type: Format
-            fmt: "store-%s"
+        - fromFieldPath: metadata.annotations
+          toFieldPath: metadata.annotations
+        - fromFieldPath: spec.id
+          toFieldPath: metadata.name
+    - name: region
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.region
+          toFieldPath: spec.forProvider.region
+  resources:
+    - name: bucket
+      base:
+        apiVersion: s3.aws.upbound.io/v1beta2
+        kind: Bucket
+        spec:
+          forProvider:
+            region: us-west-1
+          providerConfigRef:
+            name: default
+      patches:
+        - type: PatchSet
+          patchSetName: metadata
+        - type: PatchSet
+          patchSetName: region

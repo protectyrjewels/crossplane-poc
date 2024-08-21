@@ -1,3 +1,4 @@
+---
 apiVersion: meta.pkg.crossplane.io/v1
 kind: Configuration
 metadata:
@@ -12,5 +13,5 @@ spec:
   crossplane:
     version: '>=v1.14.0'
   dependsOn:
-  - provider: xpkg.upbound.io/upbound/provider-aws-s3
-    version: '>=v1.0.0'
+    - provider: xpkg.upbound.io/upbound/provider-aws-s3
+      version: '>=v1.0.0'

@@ -1,7 +1,8 @@
+---
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
-metadata: 
-  name: store.adolfosilva.dev
+metadata:
+  name: stores.adolfosilva.dev
 spec:
   group: adolfosilva.dev
   names:
@@ -11,20 +12,22 @@ spec:
     kind: StoreClaim
     plural: storeclaims
   versions:
-  - name: v1alpha1
-    served: true
-    referenceable: true
-    schema:
-      openAPIV3Schema:
-        type: object
-        properties:
-          spec:
-            type: object
-            properties:
-              region:
-                type: string
-              generatedName:
-                type: string
-            required:
-              - region
-              - generatedName
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Name of the bucket
+                region:
+                  type: string
+                  description: AWS Region
+              required:
+                - id
+                - region
