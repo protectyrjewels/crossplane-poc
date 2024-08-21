@@ -36,12 +36,12 @@ kubectl apply -n crossplane-system -f package/definition.yml
 # stores.adolfosilva.dev   True          True      2m25s
 
 # Install the ProviderConfig
-kubectl apply -n crossplane-system -f aws/00-aws-provider-config.yml
+kubectl apply -n crossplane-system -f providers/00-aws-provider-config.yml
 # providerconfig.aws.upbound.io/default created
 
 # Install the necessary providers
-kubectl apply -n crossplane-system -f aws/01-aws-s3-provider.yml
-kubectl apply -n crossplane-system -f aws/02-aws-sqs-provider.yml
+kubectl apply -n crossplane-system -f providers/01-aws-s3-provider.yml
+kubectl apply -n crossplane-system -f providers/02-aws-sqs-provider.yml
 # provider.pkg.crossplane.io/provider-aws-s3 created
 # provider.pkg.crossplane.io/provider-aws-sqs created
 
